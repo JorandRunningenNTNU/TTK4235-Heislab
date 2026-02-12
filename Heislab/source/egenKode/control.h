@@ -4,6 +4,7 @@
 
 void controlUpdate();
 int controlStopp();
+int controlDoor();
 UpButtons controlUpButtons();
 DownButtons controlDownButtons();
 ElevatorButtons controlElevatorButtons();
