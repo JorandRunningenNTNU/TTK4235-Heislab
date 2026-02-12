@@ -7,6 +7,12 @@
 // lokale funksjoner
 void checkBetweenFloors(float position);
 void changeDirection(MotorDirection newDirection);
+void changeDoor(int newDoorOpen);
+void changeFloorLight();
+void changeButtonLight(UpButtons newUpButtons, 
+                       DownButtons newDownButtons,
+                       ElevatorButtons newElevatorButtons);
+void changeStop(int newStop);
 
 // variabler
 MotorDirection direction = DIRN_STOP;
@@ -32,28 +38,37 @@ void outputUpdateStartUp(){
 }
 
 void outputUpdate(){
-    // oppdatere all informasjon om posisjon
+    // oppdatere all informasjon om posisjon og sette etasjelys
     float position = statePosition();
     checkBetweenFloors(position);
     
     if (betweenFloors == 0){
-        prewFloor = (int) position;
+        if (prewFloor != (int) position){
+            elevio_floorIndicator(prewFloor);
+            prewFloor = (int) position;
+        }
     }
+
 
     // Sette motorretning
     MotorDirection newDirection = controlDirection();
     changeDirection(newDirection);
     
-    // åpne dør
-    // mangler støtte for å vite om døren skal være åpen fra control
 
-    
+    // Dør
+    int newDoorOpen = controlDoor();
+    changeDoor(newDoorOpen);
+
+
+    // bestillingsknapper
     UpButtons newUpButtons = controlUpButtons();
     DownButtons newDownButtons = controlDownButtons();
     ElevatorButtons newElevatorButtons = controlElevatorButtons();
+    changeButtonLight(newUpButtons, newDownButtons, newElevatorButtons);
 
     //stopp
-    int stop = controlStopp();
+    int newStop = controlStopp();
+    changeStop(newStop);
 }
 
 void checkBetweenFloors(float position){
@@ -113,5 +128,61 @@ void changeDirection(MotorDirection newDirection){
 
     if (sendChangeToIO){
         elevio_motorDirection(direction);
+    }
+}
+
+void changeDoor(int newDoorOpen){
+    if (newDoorOpen &&
+        (direction == DIRN_STOP) &&
+        (betweenFloors == 0) && 
+        (doorOpen != newDoorOpen)){
+            doorOpen = newDoorOpen;
+            elevio_doorOpenLamp(doorOpen);
+        }
+    
+    if (newDoorOpen && (direction != DIRN_STOP)){
+        printf("kan ikke åpne dør i fart");
+    }
+
+    if (newDoorOpen && betweenFloors){
+        printf("kan ikke åpne dør mellom etasjer");
+    }
+
+    // lukke dør
+    if ((newDoorOpen == 0) && doorOpen){
+        doorOpen = newDoorOpen;
+        elevio_doorOpenLamp(doorOpen);
+    }
+}
+
+void changeButtonLight(UpButtons newUpButtons, 
+                       DownButtons newDownButtons,
+                       ElevatorButtons newElevatorButtons){
+    for (int i = 0; i < 3; i++){
+        if (newDownButtons.buttons[i] != downButtons.buttons[i]){
+            downButtons.buttons[i] = newDownButtons.buttons[i];
+            elevio_buttonLamp(i+1, BUTTON_HALL_DOWN, downButtons.buttons[i]);
+        }
+    }
+
+    for (int i = 0; i < 3; i++){
+        if (newUpButtons.buttons[i] != upButtons.buttons[i]){
+            upButtons.buttons[i] = newUpButtons.buttons[i];
+            elevio_buttonLamp(i, BUTTON_HALL_UP, upButtons.buttons[i]);
+        }
+    }
+
+    for (int i = 0; i < 4; i++){
+        if (newElevatorButtons.buttons[i] != elevatorButtons.buttons[i]){
+            elevatorButtons.buttons[i] = newElevatorButtons.buttons[i];
+            elevio_buttonLamp(i, BUTTON_CAB, elevatorButtons.buttons[i]);
+        }
+    }
+}
+
+void changeStop(int newStop){
+    if (newStop != stop){
+        stop = newStop;
+        elevio_stopLamp(stop);
     }
 }
