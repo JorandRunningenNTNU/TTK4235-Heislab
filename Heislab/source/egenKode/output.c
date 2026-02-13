@@ -1,14 +1,22 @@
 #include <stdio.h>
+
+//#define test
+
+#ifdef test
+#include "testfiler\testOutput.h"
+#endif
+
+#ifndef test
 #include "output.h"
 #include "startUp.h"
 #include "control.h"
 #include "state.h"
+#endif
 
 // lokale funksjoner
 void checkBetweenFloors(float position);
 void changeDirection(MotorDirection newDirection);
 void changeDoor(int newDoorOpen);
-void changeFloorLight();
 void changeButtonLight(UpButtons newUpButtons, 
                        DownButtons newDownButtons,
                        ElevatorButtons newElevatorButtons);
@@ -20,9 +28,9 @@ int doorOpen = 1; // 0 er lukket, 1 er åpen, intielt skal døren være åpen se
 int stop = 0; 
 int prewFloor = 0;
 int betweenFloors = 0;
-UpButtons upButtons = {0, 0, 0};
-DownButtons downButtons = {0, 0, 0};
-ElevatorButtons elevatorButtons = {0, 0, 0, 0};
+UpButtons upButtons = {-1, -1, -1};
+DownButtons downButtons = {-1, -1, -1};
+ElevatorButtons elevatorButtons = {-1, -1, -1, -1};
 
 
 void outputUpdateStartUp(){
@@ -44,21 +52,19 @@ void outputUpdate(){
     
     if (betweenFloors == 0){
         if (prewFloor != (int) position){
-            elevio_floorIndicator(prewFloor);
             prewFloor = (int) position;
+            elevio_floorIndicator(prewFloor);
         }
     }
-
-
-    // Sette motorretning
-    MotorDirection newDirection = controlDirection();
-    changeDirection(newDirection);
-    
 
     // Dør
     int newDoorOpen = controlDoor();
     changeDoor(newDoorOpen);
 
+    // Sette motorretning
+    MotorDirection newDirection = controlDirection();
+    changeDirection(newDirection);
+    
 
     // bestillingsknapper
     UpButtons newUpButtons = controlUpButtons();
@@ -69,6 +75,10 @@ void outputUpdate(){
     //stopp
     int newStop = controlStopp();
     changeStop(newStop);
+}
+
+MotorDirection outputDirection(){
+    return direction;
 }
 
 void checkBetweenFloors(float position){
