@@ -1,5 +1,10 @@
 #include "input.h"
 
+#define test
+#ifdef test
+#include "testfiler\testInput.h"
+#endif
+
 int stop = 0;
 int floor = -1;
 int obstruction = 0;
