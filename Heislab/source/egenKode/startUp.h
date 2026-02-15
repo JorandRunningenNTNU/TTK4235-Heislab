@@ -2,7 +2,7 @@
 #define startUp
 #include "data.h"
 
-void startUpUpdate();
+int startUpUpdate(); // returnerer 1 om startup er ferdig
 MotorDirection startUpDirection();
 
 #endif
