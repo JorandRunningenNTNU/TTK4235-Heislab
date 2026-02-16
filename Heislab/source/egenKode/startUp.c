@@ -1,5 +1,11 @@
-#include "startUp.h"
+#define test
+#ifdef test
 #include "testfiler/testStartUp.h"
+#endif
+
+#ifndef test
+#include "startUp.h"
+#endif
 
 MotorDirection direction = DIRN_DOWN;
 int floor = -1;

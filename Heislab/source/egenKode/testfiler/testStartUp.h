@@ -1,4 +1,10 @@
+#include "../startUp.h"
+#include "output.h"
+
 int main(){
-    startUpUpdate();
+    while (!startUpUpdate()){
+        outputUpdateStartUp();
+    }
+    
     return 0;
 }
