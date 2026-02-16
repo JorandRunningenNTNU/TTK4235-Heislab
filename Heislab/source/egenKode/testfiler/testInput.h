@@ -1,10 +1,11 @@
 #ifndef testInput
 #define testInput
-#include "..\egenKode\data.h"
+#include "../data.h"
 #include <stdio.h>
 #include <time.h>
 
 int main(){
+    elevio_init();
     // gjør én utskriving av input hvert 5 sekund 4 ganger. 
     time_t start = time(NULL);
     time_t tid = time(NULL);
@@ -15,7 +16,7 @@ int main(){
             inputUpdate();
             
             printf("Stopp %d \n", inputStopp());
-            printf("Obstrksjon %D \n", inputObstruction());
+            printf("Obstrksjon %d \n", inputObstruction());
             printf("Oppknapper %d, %d, %d \n", inputUpButtons().buttons[0],
                                                inputUpButtons().buttons[1],
                                                inputUpButtons().buttons[2]);
@@ -26,7 +27,7 @@ int main(){
                                                     inputElevatorButtons().buttons[1],
                                                     inputElevatorButtons().buttons[2],
                                                     inputElevatorButtons().buttons[3]);
-            
+            printf("\n");            
             n += 5;
         }
         

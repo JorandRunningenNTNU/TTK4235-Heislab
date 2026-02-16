@@ -1,8 +1,8 @@
 #include "input.h"
 
-#define test
+//#define test
 #ifdef test
-#include "testfiler\testInput.h"
+#include "testfiler/testInput.h"
 #endif
 
 int stop = 0;
@@ -23,7 +23,7 @@ void inputUpdate(){
         }
 
         if (i != 0){
-            downButtons.buttons[i] = elevio_callButton(i, BUTTON_HALL_DOWN);
+            downButtons.buttons[i-1] = elevio_callButton(i, BUTTON_HALL_DOWN);
         }
 
         elevatorButtons.buttons[i] = elevio_callButton(i, BUTTON_CAB);
