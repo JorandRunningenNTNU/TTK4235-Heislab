@@ -1,12 +1,46 @@
 #include "state.h"
 #include "input.h"
+#include "output.h"
+
+
+int checkIsOnFloor(){
+    if (inputFloorSensor() == -1){return 0;}
+    else if (inputFloorSensor() != -1){return 1;}
+}
+
+int isOnFloor = 1;
+int PrewFloor;
+float Pos;
 
 void stateUpdate(){
-    if (inputStopp());
-    
-    int Etasje = inputFloorSensor();
-    if (Etasje = -1){
+    int CurrentFloor = inputFloorSensor();
 
+    if (CurrentFloor != -1){ 
+        PrewFloor = CurrentFloor;
+        Pos = CurrentFloor;
     }
-    return Etasje;
+    if (CurrentFloor == -1){
+        MotorDirection CurrentDirection = stateDirection();
+        if ((CurrentDirection == DIRN_UP) && (isOnFloor)){
+            Pos = PrewFloor + 0.5;    //Viser at heisen er over Etasje x
+        }
+        else if ((CurrentDirection == DIRN_DOWN) && (isOnFloor)){
+           Pos = PrewFloor -0.5;   //Viser at heisen er under Etasje x 
+        }
+    }
+
+    isOnFloor = checkIsOnFloor();    
+
+}
+
+int statePrewFloor(){
+    return PrewFloor;
+}
+
+float statePosition(){
+    return Pos;
+}
+
+MotorDirection stateDirection(){
+    return outputDirection();
 }
