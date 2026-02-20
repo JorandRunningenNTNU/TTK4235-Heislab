@@ -4,6 +4,9 @@
 
 void queueUpdate();
 Actions queueNext();
+UpButtons queueUpOrdrs();
+DownButtons queueDownOrdrs();
+ElevatorButtons queueElevatorOrdrs();
 
 typedef enum {
     DOWN = 0,

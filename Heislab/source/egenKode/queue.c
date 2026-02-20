@@ -22,12 +22,14 @@ int obstruction = 0;
 int stop = 0;
 int wait = 0;
 double timeDoor = 0;
-double timeObstruction = 0;
+int doorOpen = 0;
 
 
 
 void queueUpdate(){
     checkOrders();
+    doorOpen = stateDoorOpen();
+    position = statePosition();
 
     // stopp sletter ordre og next skal da være stop. 
     if (stop){
@@ -36,30 +38,72 @@ void queueUpdate(){
         return;
     }
     
-    // obstruksjon beholder døren åpen
-    if (obstruction){
-
+    // obstruksjon reseter doorOpen tiden om døren er åpen
+    if (obstruction && doorOpen){
+        timeDoor = getTime();
+    }
+    
+    // Døren lukkes når tiden er uten
+    if (doorOpen){
+        if ((getTime() - timeDoor) > 3){
+            next = PAUSE_DOOR_CLOSED;
+            return;
+        }
+        next = PAUSE_DOOR_OPEN;
+        return;
     }
 
-    //
-    position = statePosition();
+    // betjene ordre når heisen er i DOWN modus
     if (direction == DOWN){
-        // inluderer etasjen man er i
         ordersUnder(position);
 
         // betjene ordre i etasjen man er
         if (next = position){
             next = PAUSE_DOOR_OPEN;
+            timeDoor = getTime();
+            
+            // sletter alle ordre i etasjen
+            if (position != 4){up.buttons[(int)position - 1] = 0;}
+            if (position != 1){down.buttons[(int)position - 2] = 0;}
+            elevator.buttons[(int)position - 1] = 0;
         }
+        return;
     }
     
-    if (direction == UP){
-        ordersOver(position);
+    // betjene ordre om heisen er i UP-modus
+    else {
+        ordersUnder(position);
+
+        // betjene ordre i etasjen man er
+        if (next = position){
+            next = PAUSE_DOOR_OPEN;
+            timeDoor = getTime();
+
+            // sletter alle ordre i etasjen
+            if (position != 4){up.buttons[(int)position - 1] = 0;}
+            if (position != 1){down.buttons[(int)position - 2] = 0;}
+            elevator.buttons[(int)position - 1] = 0;
+            
+        }
+        return;
     }
+    // når ingenting skjer kommer heisen til å oscillere mellom up og down modus
 }  
 
 Actions queueNext(){
     return next;
+}
+
+UpButtons queueUpOrdrs(){
+    return up;
+}
+
+DownButtons queueDownOrdrs(){
+    return down;
+}
+
+ElevatorButtons queueElevatorOrdrs(){
+    return elevator;
 }
 
 void ordersUnder(float position){
@@ -91,6 +135,8 @@ void ordersUnder(float position){
 
     // sette renting til oppover
     direction = UP;
+
+    // Skrur på ingenting-ordre til ny bestilling kommer
     next = PAUSE_DOOR_CLOSED;
 }
 
@@ -123,6 +169,8 @@ void ordersOver(float position){
 
     // sette renting til nedover
     direction = DOWN;
+
+    // Skrur på ingenting-ordre til ny bestilling kommer
     next = PAUSE_DOOR_CLOSED;
 }
 
@@ -141,13 +189,13 @@ void checkOrders(){
         elevator.buttons[i] = elevator.buttons[i] || newElevator.buttons[i];
     }
 
+    // Når stopp slås av skal det ta 3 sekudner før dørene lukkes
+    if (!newStop && stop){
+        timeDoor = getTime();
+    }
     stop = newStop;
 
-    // nullstiller obstruksjonstiden så lenge knappen holdes inne
-    if (newObstruction){
-        timeObstruction = getTime();
-    }
-    obstruction = newObstruction || obstruction;
+    obstruction = newObstruction;
 }
 
 void deleteAllOrders(){
@@ -165,4 +213,5 @@ void deleteAllOrders(){
 double getTime(){
     return clock() / CLOCKS_PER_SEC;
 }
+
 
