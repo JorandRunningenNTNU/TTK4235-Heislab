@@ -6,5 +6,5 @@ void stateUpdate();
 float statePosition();
 int statePrewFloor();
 MotorDirection stateDirection();
-
+int stateDoorOpen();
 #endif

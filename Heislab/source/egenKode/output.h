@@ -5,5 +5,6 @@
 void outputUpdate();
 void outputUpdateStartUp();
 MotorDirection outputDirection();
+int outputDoorOpen();
 
 #endif
