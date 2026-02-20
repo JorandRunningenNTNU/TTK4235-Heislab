@@ -81,6 +81,10 @@ MotorDirection outputDirection(){
     return direction;
 }
 
+int outputDoorOpen(){
+    return doorOpen;
+}
+
 void checkBetweenFloors(float position){
     if ((position - (int)position) > 0.4){
         betweenFloors = 1;
