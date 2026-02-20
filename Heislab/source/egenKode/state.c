@@ -3,16 +3,16 @@
 #include "output.h"
 
 
-int checkIsOnFloor(){
-    if (inputFloorSensor() == -1){return 0;}
-    else if (inputFloorSensor() != -1){return 1;}
-}
+int checkIsOnFloor();
 
 int isOnFloor = 1;
 int PrewFloor;
 float Pos;
+int doorOpen;
 
 void stateUpdate(){
+    int doorOpen = outputDoorOpen();
+    
     int CurrentFloor = inputFloorSensor();
 
     if (CurrentFloor != -1){ 
@@ -43,4 +43,13 @@ float statePosition(){
 
 MotorDirection stateDirection(){
     return outputDirection();
+}
+
+int stateDoorOpen(){
+    return doorOpen;
+}
+
+int checkIsOnFloor(){
+    if (inputFloorSensor() == -1){return 0;}
+    else if (inputFloorSensor() != -1){return 1;}
 }
