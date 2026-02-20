@@ -2,7 +2,12 @@
 #define queue
 #include "data.h"
 
-void updateQueue();
+void queueUpdate();
 Actions queueNext();
+
+typedef enum {
+    DOWN = 0,
+    UP = 1,
+} Direction;
 
 #endif
