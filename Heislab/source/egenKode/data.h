@@ -15,7 +15,7 @@ typedef struct{
 } ElevatorButtons;
 
 typedef enum{
-    STOP = -2,
+    Stopp = -2,
     PAUSE_DOOR_OPEN = -1,
     PAUSE_DOOR_CLOSED = 0,
     ETG_1 = 1,
