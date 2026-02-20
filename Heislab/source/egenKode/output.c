@@ -41,8 +41,12 @@ void outputUpdateStartUp(){
     }
     
     // kjøre heisen så lenge startUp ønsker, ingen sikkerhetstiltak, startUp må ha kontroll
-    direction = startUpDirection();
-    elevio_motorDirection(direction);
+    MotorDirection newDirection = startUpDirection();
+    if (newDirection != direction){
+        direction = newDirection;
+        elevio_motorDirection(direction);   
+    }
+    
 }
 
 void outputUpdate(){
