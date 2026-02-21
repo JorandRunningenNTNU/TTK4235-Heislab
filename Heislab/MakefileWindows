@@ -1,0 +1,28 @@
+#dette er for windows
+TARGET := heislab.exe
+.DEFAULT_GOAL := $(TARGET)
+C_FLAGS := -Wall -Werror -O0 -MMD -MP
+BUILD_DIR := build
+
+C_FILES_PATH := main.c $(wildcard egenKode/*.c) driver/elevio.c
+C_FILES := $(notdir $(C_FILES_PATH))
+O_FILES := $(C_FILES:%.c=$(BUILD_DIR)/%.o)
+DEPENDENCY := $(O_FILES:.o=.d)
+
+vpath %.c . egenKode driver
+
+$(TARGET) : $(O_FILES)
+	gcc $(O_FILES) -o $(TARGET)
+
+$(BUILD_DIR)/%.o : %.c | $(BUILD_DIR)
+	gcc -c $(C_FLAGS) $< -o $@
+
+$(BUILD_DIR) :
+	@if not exist $(BUILD_DIR) mkdir $(BUILD_DIR)
+
+-include $(DEPENDENCY)
+
+.PHONY: clean
+clean:
+	@if exist "$(BUILD_DIR)" rmdir "$(BUILD_DIR)"
+	@if exist "$(TARGET)" del "$(TARGET)"

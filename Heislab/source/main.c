@@ -3,12 +3,12 @@
 #include <signal.h>
 #include <time.h>
 #include "driver/elevio.h"
-#include "startUp.h"
-#include "input.h"
-#include "state.h"
-#include "queue.h"
-#include "control.h"
-#include "output.h"
+#include "egenKode/startUp.h"
+#include "egenKode/input.h"
+#include "egenKode/state.h"
+#include "egenKode/queue.h"
+#include "egenKode/control.h"
+#include "egenKode/output.h"
 
 
 
