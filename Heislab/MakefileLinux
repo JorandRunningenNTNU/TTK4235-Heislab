@@ -5,12 +5,12 @@ TARGET := heislab
 C_FLAGS := -Wall -Werror -O0 -MMD -MP
 BUILD_DIR := build
 
-C_FILES_PATH := main.c $(wildcard egenKode/*.c) driver/elevio.c
+C_FILES_PATH := source/main.c $(wildcard source/egenKode/*.c) source/driver/elevio.c
 C_FILES := $(notdir $(C_FILES_PATH))
 O_FILES := $(C_FILES:%.c=$(BUILD_DIR)/%.o)
 DEPENDENCY := $(O_FILES:.o=.d)
 
-vpath %.c . egenKode driver
+vpath %.c . source/egenKode source/driver
 
 $(TARGET): $(O_FILES)
 	gcc $(O_FILES) -o $(TARGET)
