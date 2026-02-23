@@ -8,11 +8,11 @@
 #endif
 
 MotorDirection direction = DIRN_DOWN;
-int floor = -1;
+int Cfloor = -1;
 
 int startUpUpdate(){
-    floor = elevio_floorSensor();
-    if (floor != -1){
+    Cfloor = elevio_floorSensor();
+    if (Cfloor != -1){
         direction = DIRN_STOP;
         return 1;
     }

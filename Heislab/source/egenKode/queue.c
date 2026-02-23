@@ -75,7 +75,7 @@ void queueUpdate(){
         ordersUnder(position);
 
         // betjene ordre i etasjen man er
-        if (next = position){
+        if (next == position){
             next = PAUSE_DOOR_OPEN;
             timeDoor = getTime();
 
@@ -145,26 +145,26 @@ void ordersOver(float position){
     //    oppover. Dersom dette ikke finnes ser den etter folk i etasjene over som skal ned. 
     //    Dersom dette ikke finnes settes directopn til DOWN. 
     int level = (int)ceil(position);
-    
+
     // sjekke etter folk som skal opp
-    int i = level;
-    while (i<5){
-        if (((i < 4) && (up.buttons[i-1])) ||
-            (elevator.buttons[i-1])){
-                next = i;
+    int l = level;
+    while (l<5){
+        if (((l < 4) && (up.buttons[l-1])) ||
+            (elevator.buttons[l-1])){
+                next = l;
                 return;
             }
-        i++;
+        l++;
     }
-
+    
     // sjekke etter folk som skal ned
-    int i = level;
-    while (i<5){
-        if ((i>1) && down.buttons[i-2]){
-            next = i;
+    int k =level;
+    while (k<5){
+        if ((k>1) && down.buttons[k-2]){
+            next = k;
             return;
             }
-        i++;
+        k++;
     }
 
     // sette renting til nedover

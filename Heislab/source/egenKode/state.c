@@ -52,4 +52,5 @@ int stateDoorOpen(){
 int checkIsOnFloor(){
     if (inputFloorSensor() == -1){return 0;}
     else if (inputFloorSensor() != -1){return 1;}
+    return 0;
 }

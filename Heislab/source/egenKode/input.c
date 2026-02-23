@@ -5,8 +5,10 @@
 #include "testfiler/testInput.h"
 #endif
 
+//va bug her med redefinition av floor igjen....
+
 int stop = 0;
-int floor = -1;
+int floor_1 = -1;
 int obstruction = 0;
 UpButtons upButtons = {0, 0, 0};
 DownButtons downButtons = {0, 0, 0};
@@ -14,7 +16,7 @@ ElevatorButtons elevatorButtons = {0, 0, 0, 0};
 
 void inputUpdate(){
     stop = elevio_stopButton();
-    floor = elevio_floorSensor();
+    floor_1 = elevio_floorSensor();
     obstruction = elevio_obstruction();
 
     for (int i = 0; i < 4; i++){
@@ -32,7 +34,7 @@ void inputUpdate(){
 
 int inputStopp(){return stop;}
 
-int inputFloorSensor(){return floor;}
+int inputFloorSensor(){return floor_1;}
 
 int inputObstruction(){return obstruction;}
 
