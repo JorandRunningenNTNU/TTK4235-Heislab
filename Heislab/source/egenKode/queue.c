@@ -58,7 +58,7 @@ void queueUpdate(){
         ordersUnder(position);
 
         // betjene ordre i etasjen man er
-        if (next = position){
+        if (next == position){
             next = PAUSE_DOOR_OPEN;
             timeDoor = getTime();
             
@@ -122,15 +122,15 @@ void ordersUnder(float position){
             }
         i--;
     }
-
+//EMMAS ENDRING: LIKER IKKE AT I ER DEFINERT FLERE GANGER, ENDRET DEN ENE TIL J
     // sjekke etter folk som skal opp
-    int i = level;
-    while (i>0){
-        if ((i<4) && (up.buttons[i-1])){
-            next = i;
+    int j = level;
+    while (j>0){
+        if ((j<4) && (up.buttons[j-1])){
+            next = j;
             return;
             }
-        i--;
+        j--;
     }
 
     // sette renting til oppover
