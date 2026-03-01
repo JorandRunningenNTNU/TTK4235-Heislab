@@ -2,12 +2,12 @@
 #include "queue.h"
 #include "state.h"
 
-int stop = 0;
-int door = 0;
-Direction direction;
-UpButtons up = {0, 0, 0};
-DownButtons down = {0, 0, 0};
-ElevatorButtons elevator = {0, 0, 0, 0};
+static int stop = 0;
+static int door = 0;
+static Direction direction;
+static UpButtons up = {0, 0, 0};
+static DownButtons down = {0, 0, 0};
+static ElevatorButtons elevator = {0, 0, 0, 0};
 
 void controlUpdate(){
     Actions next = queueNext();

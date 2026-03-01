@@ -7,12 +7,12 @@
 #include "startUp.h"
 #endif
 
-MotorDirection direction = DIRN_DOWN;
-int Cfloor = -1;
+static MotorDirection direction = DIRN_DOWN;
+static int floor = -1;
 
 int startUpUpdate(){
-    Cfloor = elevio_floorSensor();
-    if (Cfloor != -1){
+    floor = elevio_floorSensor();
+    if (floor != -1){
         direction = DIRN_STOP;
         return 1;
     }
