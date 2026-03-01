@@ -5,24 +5,24 @@
 #include <stdio.h>
 #include <time.h>
 
-void ordersOver(float position);
-void ordersUnder(float position);
-void checkOrders();
-void deleteAllOrders();
-double getTime();
+static void ordersOver(float position);
+static void ordersUnder(float position);
+static void checkOrders();
+static void deleteAllOrders();
+static double getTime();
 
 
-Actions next = PAUSE_DOOR_CLOSED;
-Direction direction = DOWN;
-DownButtons down = {0, 0, 0};
-UpButtons up = {0, 0, 0};
-ElevatorButtons elevator = {0, 0, 0, 0};
-float position;
-int obstruction = 0;
-int stop = 0;
-int wait = 0;
-double timeDoor = 0;
-int doorOpen = 0;
+static Actions next = PAUSE_DOOR_CLOSED;
+static Direction direction = DOWN;
+static DownButtons down = {0, 0, 0};
+static UpButtons up = {0, 0, 0};
+static ElevatorButtons elevator = {0, 0, 0, 0};
+static float position;
+static int obstruction = 0;
+static int stop = 0;
+static int wait = 0;
+static double timeDoor = 0;
+static int doorOpen = 0;
 
 
 
@@ -106,7 +106,7 @@ ElevatorButtons queueElevatorOrdrs(){
     return elevator;
 }
 
-void ordersUnder(float position){
+static void ordersUnder(float position){
     // Sjekker nedover og finner nærmest etasje der folk i heisen skal av, eller folk skal 
     //    nedover. Dersom dette ikke finnes ser den etter folk i etasjene under som skal opp. 
     //    Dersom dette ikke finnes settes directopn til UP. 
@@ -140,7 +140,7 @@ void ordersUnder(float position){
     next = PAUSE_DOOR_CLOSED;
 }
 
-void ordersOver(float position){
+static void ordersOver(float position){
     // Sjekker oppover og finner nærmest etasje der folk i heisen skal av, eller folk skal 
     //    oppover. Dersom dette ikke finnes ser den etter folk i etasjene over som skal ned. 
     //    Dersom dette ikke finnes settes directopn til DOWN. 
@@ -174,7 +174,7 @@ void ordersOver(float position){
     next = PAUSE_DOOR_CLOSED;
 }
 
-void checkOrders(){
+static void checkOrders(){
     UpButtons newUp = inputUpButtons();
     DownButtons newDown = inputDownButtons();
     ElevatorButtons newElevator = inputElevatorButtons();
@@ -198,7 +198,7 @@ void checkOrders(){
     obstruction = newObstruction;
 }
 
-void deleteAllOrders(){
+static void deleteAllOrders(){
     for (int i=0; i<3; i++){
         down.buttons[i] = 0;
         up.buttons[i] = 0;
@@ -210,7 +210,7 @@ void deleteAllOrders(){
 
 }
 
-double getTime(){
+static double getTime(){
     return clock() / CLOCKS_PER_SEC;
 }
 

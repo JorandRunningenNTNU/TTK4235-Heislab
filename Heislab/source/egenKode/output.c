@@ -14,23 +14,23 @@
 #endif
 
 // lokale funksjoner
-void checkBetweenFloors(float position);
-void changeDirection(MotorDirection newDirection);
-void changeDoor(int newDoorOpen);
-void changeButtonLight(UpButtons newUpButtons, 
+static void checkBetweenFloors(float position);
+static void changeDirection(MotorDirection newDirection);
+static void changeDoor(int newDoorOpen);
+static void changeButtonLight(UpButtons newUpButtons, 
                        DownButtons newDownButtons,
                        ElevatorButtons newElevatorButtons);
-void changeStop(int newStop);
+static void changeStop(int newStop);
 
 // variabler
-MotorDirection direction = DIRN_STOP;
-int doorOpen = 1; // 0 er lukket, 1 er åpen, intielt skal døren være åpen se outp.upd.startUp()
-int stop = 0; 
-int prewFloor = 0;
-int betweenFloors = 0;
-UpButtons upButtons = {-1, -1, -1};
-DownButtons downButtons = {-1, -1, -1};
-ElevatorButtons elevatorButtons = {-1, -1, -1, -1};
+static MotorDirection direction = DIRN_STOP;
+static int doorOpen = 1; // 0 er lukket, 1 er åpen, intielt skal døren være åpen se outp.upd.startUp()
+static int stop = 0; 
+static int prewFloor = 0;
+static int betweenFloors = 0;
+static UpButtons upButtons = {-1, -1, -1};
+static DownButtons downButtons = {-1, -1, -1};
+static ElevatorButtons elevatorButtons = {-1, -1, -1, -1};
 
 
 void outputUpdateStartUp(){
@@ -89,7 +89,7 @@ int outputDoorOpen(){
     return doorOpen;
 }
 
-void checkBetweenFloors(float position){
+static void checkBetweenFloors(float position){
     if ((position - (int)position) > 0.4){
         betweenFloors = 1;
     }
@@ -98,7 +98,7 @@ void checkBetweenFloors(float position){
     }
 }
 
-void changeDirection(MotorDirection newDirection){
+static void changeDirection(MotorDirection newDirection){
     int sendChangeToIO = 0; // sender kun forespørsel til IO ved nye rentinger
 
     // endre motorreting
@@ -149,7 +149,7 @@ void changeDirection(MotorDirection newDirection){
     }
 }
 
-void changeDoor(int newDoorOpen){
+static void changeDoor(int newDoorOpen){
     if (newDoorOpen &&
         (direction == DIRN_STOP) &&
         (betweenFloors == 0) && 
@@ -173,7 +173,7 @@ void changeDoor(int newDoorOpen){
     }
 }
 
-void changeButtonLight(UpButtons newUpButtons, 
+static void changeButtonLight(UpButtons newUpButtons, 
                        DownButtons newDownButtons,
                        ElevatorButtons newElevatorButtons){
     for (int i = 0; i < 3; i++){
@@ -198,7 +198,7 @@ void changeButtonLight(UpButtons newUpButtons,
     }
 }
 
-void changeStop(int newStop){
+static void changeStop(int newStop){
     if (newStop != stop){
         stop = newStop;
         elevio_stopLamp(stop);

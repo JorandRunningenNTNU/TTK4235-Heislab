@@ -3,12 +3,12 @@
 #include "output.h"
 
 
-int checkIsOnFloor();
+static int checkIsOnFloor();
 
-int isOnFloor = 1;
-int PrewFloor;
-float Pos;
-int doorOpen;
+static int isOnFloor = 1;
+static int PrewFloor;
+static float Pos;
+static int doorOpen;
 
 void stateUpdate(){
     int doorOpen = outputDoorOpen();
@@ -49,7 +49,7 @@ int stateDoorOpen(){
     return doorOpen;
 }
 
-int checkIsOnFloor(){
+static int checkIsOnFloor(){
     if (inputFloorSensor() == -1){return 0;}
     else if (inputFloorSensor() != -1){return 1;}
     return 0;
