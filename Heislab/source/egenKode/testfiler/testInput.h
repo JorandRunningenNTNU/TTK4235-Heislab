@@ -1,3 +1,4 @@
+/*
 #ifndef testInput
 #define testInput
 #include "../data.h"
@@ -36,3 +37,4 @@ int main(){
 }
 
 #endif
+*/

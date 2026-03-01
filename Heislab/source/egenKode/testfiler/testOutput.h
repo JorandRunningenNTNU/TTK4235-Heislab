@@ -1,3 +1,4 @@
+/*
 #include <stdio.h>
 #include "testData.h"
 
@@ -54,7 +55,7 @@ int controlStopp(){
 
 // out-funksjoner
 void elevio_doorOpenLamp(int doorOpen){
-    printf("åpne dør %d \n", doorOpen);
+    printf("apne dor %d \n", doorOpen);
 }
 
 void elevio_motorDirection(MotorDirection direction){
@@ -72,3 +73,4 @@ void elevio_buttonLamp(int floor, ButtonType button, int value){
 void elevio_stopLamp(int stop){
     printf("stopp %d \n", stop);
 }
+*/

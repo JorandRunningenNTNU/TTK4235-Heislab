@@ -1,3 +1,4 @@
+/*
 #ifndef data
 #define data
 
@@ -29,7 +30,7 @@ typedef struct{
 } ElevatorButtons;
 
 typedef enum{
-    Stopp = -2,
+    STOP = -2,
     PAUSE_DOOR_OPEN = -1,
     PAUSE_DOOR_CLOSED = 0,
     ETG_1 = 1,
@@ -39,3 +40,4 @@ typedef enum{
 } Actions; 
 
 #endif
+*/
