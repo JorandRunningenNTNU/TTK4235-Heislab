@@ -28,9 +28,9 @@ static int doorOpen = 1; // 0 er lukket, 1 er åpen, intielt skal døren være �
 static int stop = 0; 
 static int prewFloor = 0;
 static int betweenFloors = 0;
-static UpButtons upButtons = {-1, -1, -1};
-static DownButtons downButtons = {-1, -1, -1};
-static ElevatorButtons elevatorButtons = {-1, -1, -1, -1};
+static UpButtons upButtons = {{-1, -1, -1}};
+static DownButtons downButtons = {{-1, -1, -1}};
+static ElevatorButtons elevatorButtons = {{-1, -1, -1, -1}};
 
 
 void outputUpdateStartUp(){
@@ -61,15 +61,14 @@ void outputUpdate(){
         }
     }
 
-    // Dør
-    int newDoorOpen = controlDoor();
-    changeDoor(newDoorOpen);
-
     // Sette motorretning
     MotorDirection newDirection = controlDirection();
     changeDirection(newDirection);
     
-
+    // Dør
+    int newDoorOpen = controlDoor();
+    changeDoor(newDoorOpen);
+    
     // bestillingsknapper
     UpButtons newUpButtons = controlUpButtons();
     DownButtons newDownButtons = controlDownButtons();

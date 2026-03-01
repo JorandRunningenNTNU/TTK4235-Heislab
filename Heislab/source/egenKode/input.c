@@ -8,9 +8,9 @@
 static int stop = 0;
 static int floor = -1;
 static int obstruction = 0;
-static UpButtons upButtons = {0, 0, 0};
-static DownButtons downButtons = {0, 0, 0};
-static ElevatorButtons elevatorButtons = {0, 0, 0, 0};
+static UpButtons upButtons = {{0, 0, 0}};
+static DownButtons downButtons = {{0, 0, 0}};
+static ElevatorButtons elevatorButtons = {{0, 0, 0, 0}};
 
 void inputUpdate(){
     stop = elevio_stopButton();

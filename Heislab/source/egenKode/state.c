@@ -11,13 +11,14 @@ static float Pos;
 static int doorOpen;
 
 void stateUpdate(){
-    int doorOpen = outputDoorOpen();
+    doorOpen = outputDoorOpen();
     
     int CurrentFloor = inputFloorSensor();
 
     if (CurrentFloor != -1){ 
-        PrewFloor = CurrentFloor;
-        Pos = CurrentFloor;
+        // sensoren har 0 som første etasje, mens resten av systemet har 1 som førsteetaje
+        PrewFloor = CurrentFloor+1;
+        Pos = CurrentFloor+1;
     }
     if (CurrentFloor == -1){
         MotorDirection CurrentDirection = stateDirection();

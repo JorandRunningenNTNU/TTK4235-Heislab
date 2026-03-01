@@ -14,9 +14,9 @@ static double getTime();
 
 static Actions next = PAUSE_DOOR_CLOSED;
 static Direction direction = DOWN;
-static DownButtons down = {0, 0, 0};
-static UpButtons up = {0, 0, 0};
-static ElevatorButtons elevator = {0, 0, 0, 0};
+static DownButtons down = {{0, 0, 0}};
+static UpButtons up = {{0, 0, 0}};
+static ElevatorButtons elevator = {{0, 0, 0, 0}};
 static float position;
 static int obstruction = 0;
 static int stop = 0;
