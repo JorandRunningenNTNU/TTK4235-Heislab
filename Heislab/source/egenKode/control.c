@@ -1,17 +1,18 @@
 #include "control.h"
 #include "queue.h"
 #include "state.h"
+#include <stdio.h>
 
 static int stop = 0;
 static int door = 0;
 static Direction direction;
-static UpButtons up = {0, 0, 0};
-static DownButtons down = {0, 0, 0};
-static ElevatorButtons elevator = {0, 0, 0, 0};
+static UpButtons up = {{0, 0, 0}};
+static DownButtons down = {{0, 0, 0}};
+static ElevatorButtons elevator = {{0, 0, 0, 0}};
 
 void controlUpdate(){
     Actions next = queueNext();
-
+    printf("control next: %d \n", next);
     switch (next)
     {
     case STOP:

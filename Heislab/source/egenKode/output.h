@@ -1,6 +1,7 @@
 #ifndef output
 #define output
-#include "data.h"
+#include "testfiler/testData.h"
+#include "testfiler/testOutput.h"
 
 void outputUpdate();
 void outputUpdateStartUp();

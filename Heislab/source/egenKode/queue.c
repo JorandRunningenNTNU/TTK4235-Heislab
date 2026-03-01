@@ -14,13 +14,12 @@ static double getTime();
 
 static Actions next = PAUSE_DOOR_CLOSED;
 static Direction direction = DOWN;
-static DownButtons down = {0, 0, 0};
-static UpButtons up = {0, 0, 0};
-static ElevatorButtons elevator = {0, 0, 0, 0};
+static DownButtons down = {{0, 0, 0}};
+static UpButtons up = {{0, 0, 0}};
+static ElevatorButtons elevator = {{0, 0, 0, 0}};
 static float position;
 static int obstruction = 0;
 static int stop = 0;
-static int wait = 0;
 static double timeDoor = 0;
 static int doorOpen = 0;
 
@@ -72,7 +71,7 @@ void queueUpdate(){
     
     // betjene ordre om heisen er i UP-modus
     else {
-        ordersUnder(position);
+        ordersOver(position);
 
         // betjene ordre i etasjen man er
         if (next == position){

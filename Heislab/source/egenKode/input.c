@@ -1,8 +1,8 @@
 #include "input.h"
 
-//#define test
+#define test
 #ifdef test
-#include "testfiler/testInput.h"
+#include <stdio.h>
 #endif
 
 //va bug her med redefinition av floor igjen....
@@ -10,10 +10,11 @@
 static int stop = 0;
 static int floor = -1;
 static int obstruction = 0;
-static UpButtons upButtons = {0, 0, 0};
-static DownButtons downButtons = {0, 0, 0};
-static ElevatorButtons elevatorButtons = {0, 0, 0, 0};
+static UpButtons upButtons = {{0, 0, 0}};
+static DownButtons downButtons = {{0, 0, 0}};
+static ElevatorButtons elevatorButtons = {{0, 0, 0, 0}};
 
+#ifndef test
 void inputUpdate(){
     stop = elevio_stopButton();
     floor = elevio_floorSensor();
@@ -31,6 +32,41 @@ void inputUpdate(){
         elevatorButtons.buttons[i] = elevio_callButton(i, BUTTON_CAB);
     }
 }
+#endif
+
+#ifdef test
+void inputUpdate(){
+    FILE* fptr;
+    char in[100];
+    fptr = fopen("source/egenKode/testfiler/testInputData.txt", "r");
+    
+    fgets(in, 100, fptr);
+    stop = (int)in[0] -48;
+
+    fgets(in, 100, fptr);
+    floor = (int)in[0] -48;
+
+    fgets(in, 100, fptr);
+    obstruction = (int)in[0] -48;
+
+    for (int i = 0; i<3; i++){
+        fgets(in, 100, fptr);
+        upButtons.buttons[i] = (int)in[0] -48;
+    }
+
+    for (int i = 0; i<3; i++){
+        fgets(in, 100, fptr);
+        downButtons.buttons[i] = (int)in[0] -48;
+    }
+
+    for (int i = 0; i<4; i++){
+        fgets(in, 100, fptr);
+        elevatorButtons.buttons[i] = (int)in[0] -48;
+    }
+
+    fclose(fptr); 
+}
+#endif
 
 int inputStopp(){return stop;}
 

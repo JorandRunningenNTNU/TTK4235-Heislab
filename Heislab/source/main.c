@@ -1,8 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <signal.h>
-#include <time.h>
-#include "driver/elevio.h"
 #include "egenKode/startUp.h"
 #include "egenKode/input.h"
 #include "egenKode/state.h"
@@ -13,20 +8,27 @@
 
 
 int main(){
-    elevio_init();
+    char c;
+    printf("start");
+    c = getchar();
 
     // oppstart
     while (!startUpUpdate()){
         outputUpdateStartUp();
+        printf("fortsett oppstart \n");
+        c = getchar();
     }
 
     // videre kjøring
     while(1){
+        printf("fortsett hoved \n");
+        c = getchar();
         inputUpdate();
         stateUpdate();
         queueUpdate();
         controlUpdate();
         outputUpdate();
     }
+    printf("%c", c);
     return 0;
 }

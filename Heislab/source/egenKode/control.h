@@ -1,6 +1,6 @@
 #ifndef control
 #define control
-#include "data.h"
+#include "testfiler/testData.h"
 
 void controlUpdate();
 int controlStopp();

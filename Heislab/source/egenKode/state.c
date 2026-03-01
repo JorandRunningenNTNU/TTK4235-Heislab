@@ -11,8 +11,7 @@ static float Pos;
 static int doorOpen;
 
 void stateUpdate(){
-    int doorOpen = outputDoorOpen();
-    
+    doorOpen = outputDoorOpen();
     int CurrentFloor = inputFloorSensor();
 
     if (CurrentFloor != -1){ 

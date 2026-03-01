@@ -1,6 +1,6 @@
 #ifndef input
 #define input
-#include "data.h"
+#include "testfiler/testData.h"
 
 void inputUpdate();
 int inputStopp();

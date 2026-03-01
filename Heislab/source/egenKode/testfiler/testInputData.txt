@@ -1,0 +1,13 @@
+0 stopp
+3 floor
+0 obstruction
+0 upButtons 1
+0 upButtons 2
+0 upButtons 3
+0 downButtons 2
+0 downButtons 3
+0 downButtons 4
+0 elevatorButtons 1
+0 elevatorButtons 2
+0 elevatorButtons 3
+0 elevatorButtons 4

@@ -1,4 +1,3 @@
-/*
 #ifndef data
 #define data
 
@@ -40,4 +39,3 @@ typedef enum{
 } Actions; 
 
 #endif
-*/
