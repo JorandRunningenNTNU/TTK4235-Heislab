@@ -57,7 +57,7 @@ void outputUpdate(){
     if (betweenFloors == 0){
         if (prewFloor != (int) position){
             prewFloor = (int) position;
-            elevio_floorIndicator(prewFloor);
+            elevio_floorIndicator(prewFloor-1);
         }
     }
 

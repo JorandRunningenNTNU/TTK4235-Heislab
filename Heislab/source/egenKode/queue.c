@@ -1,7 +1,7 @@
 #include "queue.h"
 #include "input.h"
 #include "state.h"
-#include "math.h"
+#include <math.h>
 #include <stdio.h>
 #include <time.h>
 
