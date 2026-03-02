@@ -3,6 +3,7 @@ TARGET := heislab
 .DEFAULT_GOAL := $(TARGET)
 
 C_FLAGS := -Wall -Werror -Wno-unused-variable -O0 -MMD -MP
+L_FLAGS := -fsanitize=address -lm
 BUILD_DIR := build
 
 C_FILES_PATH := source/main.c $(wildcard source/egenKode/*.c) source/driver/elevio.c
@@ -13,7 +14,7 @@ DEPENDENCY := $(O_FILES:.o=.d)
 vpath %.c source source/egenKode source/driver
 
 $(TARGET): $(O_FILES)
-	gcc $(O_FILES) -lm -o $(TARGET)
+	gcc $(O_FILES) -o $(TARGET)
 
 $(BUILD_DIR)/%.o: %.c | $(BUILD_DIR)
 	gcc -c $(C_FLAGS) $< -o $@
