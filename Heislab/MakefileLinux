@@ -14,7 +14,7 @@ DEPENDENCY := $(O_FILES:.o=.d)
 vpath %.c source source/egenKode source/driver
 
 $(TARGET): $(O_FILES)
-	gcc $(O_FILES) -o $(TARGET)
+	gcc $(O_FILES) $(L_FLAGS) -o $(TARGET)
 
 $(BUILD_DIR)/%.o: %.c | $(BUILD_DIR)
 	gcc -c $(C_FLAGS) $< -o $@
