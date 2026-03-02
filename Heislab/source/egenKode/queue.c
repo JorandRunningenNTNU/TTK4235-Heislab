@@ -115,15 +115,14 @@ static void ordersUnder(float position){
             }
         i--;
     }
-//EMMAS ENDRING: LIKER IKKE AT I ER DEFINERT FLERE GANGER, ENDRET DEN ENE TIL J
-    // sjekke etter folk som skal opp
-    int j = level;
-    while (j>0){
-        if ((j<4) && (up.buttons[j-1])){
-            next = j;
+
+    i = 1;
+    while (i <= level){
+        if ((i<4) && (up.buttons[i-1])){
+            next = i;
             return;
             }
-        j--;
+        i++;
     }
 
     // sette renting til oppover
@@ -140,24 +139,24 @@ static void ordersOver(float position){
     int level = (int)ceil(position);
 
     // sjekke etter folk som skal opp
-    int l = level;
-    while (l<5){
-        if (((l < 4) && (up.buttons[l-1])) ||
-            (elevator.buttons[l-1])){
-                next = l;
+    int i = level;
+    while (i<5){
+        if (((i < 4) && (up.buttons[i-1])) ||
+            (elevator.buttons[i-1])){
+                next = i;
                 return;
             }
-        l++;
+        i++;
     }
     
     // sjekke etter folk som skal ned
-    int k =level;
-    while (k<5){
-        if ((k>1) && down.buttons[k-2]){
-            next = k;
+    i = 4;
+    while (i >= level){
+        if ((i>1) && down.buttons[i-2]){
+            next = i;
             return;
             }
-        k++;
+        i--;
     }
 
     // sette renting til nedover
