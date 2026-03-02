@@ -20,7 +20,7 @@ static ElevatorButtons elevator = {{0, 0, 0, 0}};
 static float position;
 static int obstruction = 0;
 static int stop = 0;
-static double timeDoor = 0;
+static double timeDoor = -3;
 static int doorOpen = 0;
 
 
@@ -44,11 +44,16 @@ void queueUpdate(){
     
     // Døren lukkes når tiden er uten
     if (doorOpen){
-        if ((getTime() - timeDoor) > 3){
+        if ((getTime() - timeDoor) >= 3){
             next = PAUSE_DOOR_CLOSED;
             return;
         }
+        
         next = PAUSE_DOOR_OPEN;
+        // sletter alle ordre i etasjen døren er åpen
+        if (position != 4){up.buttons[(int)position - 1] = 0;}
+        if (position != 1){down.buttons[(int)position - 2] = 0;}
+        elevator.buttons[(int)position - 1] = 0;
         return;
     }
 
@@ -60,11 +65,6 @@ void queueUpdate(){
         if (next == position){
             next = PAUSE_DOOR_OPEN;
             timeDoor = getTime();
-            
-            // sletter alle ordre i etasjen
-            if (position != 4){up.buttons[(int)position - 1] = 0;}
-            if (position != 1){down.buttons[(int)position - 2] = 0;}
-            elevator.buttons[(int)position - 1] = 0;
         }
         return;
     }
@@ -77,12 +77,6 @@ void queueUpdate(){
         if (next == position){
             next = PAUSE_DOOR_OPEN;
             timeDoor = getTime();
-
-            // sletter alle ordre i etasjen
-            if (position != 4){up.buttons[(int)position - 1] = 0;}
-            if (position != 1){down.buttons[(int)position - 2] = 0;}
-            elevator.buttons[(int)position - 1] = 0;
-            
         }
         return;
     }
