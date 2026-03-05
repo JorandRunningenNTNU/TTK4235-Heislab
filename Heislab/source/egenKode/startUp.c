@@ -11,6 +11,13 @@ static MotorDirection direction = DIRN_DOWN;
 static int floor = -1;
 
 int startUpUpdate(){
+    if (elevio_stopButton()){
+        direction = DIRN_STOP;
+    }
+    else{
+        direction = DIRN_DOWN;
+    }
+
     floor = elevio_floorSensor();
     if (floor != -1){
         direction = DIRN_STOP;

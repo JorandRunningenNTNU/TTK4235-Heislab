@@ -118,7 +118,7 @@ static void changeDirection(MotorDirection newDirection){
     }
     
     // Sørge for at heisen ikke kjører utenfor områdene sine
-    if ((newDirection == DIRN_DOWN) && (prewFloor == 1)){
+    if ((newDirection == DIRN_DOWN) && (statePosition() == 1)){
         if (direction != DIRN_STOP){
             direction = DIRN_STOP;
             sendChangeToIO = 1;
@@ -126,7 +126,7 @@ static void changeDirection(MotorDirection newDirection){
         printf("Kan ikke kjøre nedover fra første etasje");
     }
 
-    else if ((newDirection == DIRN_UP) && (prewFloor == 4)){
+    else if ((newDirection == DIRN_UP) && (statePosition() == 4)){
         if (direction != DIRN_STOP){
             direction = DIRN_STOP;
             sendChangeToIO = 1;
