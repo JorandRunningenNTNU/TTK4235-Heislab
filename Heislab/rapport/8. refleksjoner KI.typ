@@ -1,0 +1,2 @@
+== Vår bruk av KI
+Vi har skrevet koden vår selv, ingen ting er kopiert fra KI. Vi har derimot brukt KI til å tolke feilmeldinger og søke opp syntaks. Vi har altså brukt den for raskere søk enn det er å finne tilsvarende informasjon på stackoverflow og lignende. Så KI har i praksis gjort det litt raskere å skrive kode. 
