@@ -31,16 +31,12 @@
 
 \
 
-#include "6. intro refleksjoner.typ"
+#include "6. refleksjoner UML og V-modell.typ"
 
 \
 
-#include "7. refleksjoner UML og V-modell.typ"
+#include "7. refleksjoner KI.typ"
 
 \
 
-#include "8. refleksjoner KI.typ"
-
-\
-
-#include "9. refleksjoner robushet.typ"
+#include "8. refleksjoner robushet.typ"
