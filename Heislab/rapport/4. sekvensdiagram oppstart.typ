@@ -7,4 +7,4 @@
 
 == Sekvensdiagramer
 === Sekvensdiagram for oppstart
-@sekvensdiagram_oppstart viser sekvensdiagrammet for oppstart. Oppstart-fasen kjører til heisen kommer i en kjent tilstand, altså befinner seg i en etasje. Under oppstart får main startUp og Output til å oppdatere sin interne tilstand. Dette betyr at de løser oppgavene sine som beskrevet i delen om klassediagrammet. Se #link(<klassediagram_tekst>)[#text(blue)[klassediagram]].
+@sekvensdiagram_oppstart viser sekvensdiagrammet for oppstart. Oppstartfasen kjører til heisen kommer i en kjent tilstand, altså befinner seg i en etasje. Under oppstart får main startup- og output-modulen til å oppdatere sin interne tilstand. At de oppdaterer sin interne tilstand betyr at de løser oppgavene sine, som beskrevet i delen om klassediagrammet. Se #link(<klassediagram_tekst>)[#text(blue)[klassediagram]]. StartUp returnerer nedover som motorretning til output, helt til heisen når en etasje, da skal motoren stoppe. 
