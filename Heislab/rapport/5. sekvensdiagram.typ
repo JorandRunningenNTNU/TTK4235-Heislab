@@ -8,4 +8,4 @@
 #pagebreak()
 
 === Sekvensdiagram for vanlig kjøring
-@sekvensdiagram viser hvordan modulene intragerer under vanlig kjøring. main får de ulike modulene til å oppdatere sin interne tilstand. Når modulene skal oppdatere sin interne tilstand, henter de informasjon fra de modulene de trenger informasjon fra. At en modul oppdaterer sin interne tilstand betyr at de løser de oppgavene de har ansvar for, som beskrevet i delen om klassediagrammet. Se #link(<klassediagram_tekst>)[#emph[klassediagram]].
+@sekvensdiagram viser hvordan modulene intragerer under vanlig kjøring. main får de ulike modulene til å oppdatere sin interne tilstand. Når modulene skal oppdatere sin interne tilstand, henter de informasjon fra de modulene de trenger informasjon fra. At en modul oppdaterer sin interne tilstand betyr at de løser de oppgavene de har ansvar for, som beskrevet i delen om klassediagrammet. Se #link(<klassediagram_tekst>)[#text(blue)[klassediagram]].
