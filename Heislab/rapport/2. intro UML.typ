@@ -1,2 +1,2 @@
 = UML og V-modellen
-Vi har lagd et klassediagram over modulene vi har delt systemet i, to sekvensdiagramer som viser hvordan modulene innteragerer under henholdsvis oppstart og vanlig kjøring, og et tilstandsdiagram som viser styringen av motoren og døren. 
+Vi har lagd et klassediagram over modulene vi har delt systemet i, to sekvensdiagramer som viser hvordan modulene interagerer under henholdsvis oppstart og vanlig kjøring, og et tilstandsdiagram som viser styringen av motoren og døren. 

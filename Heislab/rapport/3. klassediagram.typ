@@ -6,7 +6,7 @@
 ) <klassediagram>
 
 == Klassediagram <klassediagram_tekst>
-@klassediagram viser klassediagrammet vårt. Systemet består av seks moduler, som er implementert som hver sin c-fil i prosjektet. output-modulen benyttes til både oppstart og vanglig kjøring av heisen, mens startUp-modulen kun brukes i oppstart. De restrenende modulene brukes kun under vanlig kjøring. De ulike modulene har ulike ansvarsområder.
+@klassediagram viser klassediagrammet vårt. Systemet består av seks moduler, som er implementert som hver sin c-fil i prosjektet. output-modulen benyttes til både oppstart og vanlig kjøring av heisen, mens startUp-modulen kun brukes i oppstart. De restrende modulene brukes kun under vanlig kjøring. De ulike modulene har ulike ansvarsområder.
 
 === StartUp-modulen
 StartUp-modulen henter informasjon fra heisen om hva etasjesensorene viser og bestemmer retningen heisen skal kjøre. 
