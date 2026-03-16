@@ -23,20 +23,24 @@
 
 \
 
-#include "4. sekvensdiagram.typ"
+#include "4. sekvensdiagram oppstart.typ"
 
 \
 
-#include "5. tilstandsdiagram.typ"
+#include "5. sekvensdiagram.typ"
 
 \
 
-#include "6. refleksjoner UML og V-modell.typ"
+#include "6. tilstandsdiagram.typ"
 
 \
 
-#include "7. refleksjoner KI.typ"
+#include "7. refleksjoner UML og V-modell.typ"
 
 \
 
-#include "8. refleksjoner robushet.typ"
+#include "8. refleksjoner KI.typ"
+
+\
+
+#include "9. refleksjoner robushet.typ"
