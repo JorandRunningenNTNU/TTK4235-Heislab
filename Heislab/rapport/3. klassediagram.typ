@@ -18,7 +18,7 @@ Input-modulen henter informasjon fra heisen og kontrollboksen, altså hvilke kna
 State-modulen har i oppgave å vite posisjonen til heisen, hvilken vei motoren beveger seg, og om døren er åpen eller lukket.  
 
 === Queue-modulen
-Queue-modulen bergner hva den neste handlingen til heisen skal være, altså som den skal stå stille, stå stille med åpen dør eller eventuelt hvilken etasje den skal bevege seg til.
+Queue-modulen beregner hva den neste handlingen til heisen skal være, altså som den skal stå stille, stå stille med åpen dør eller eventuelt hvilken etasje den skal bevege seg til.
 
 === Control-modulen
 Control-modulen beregner hvilke lys som skal være på og hvilken retning motoren skal bevege seg. 
