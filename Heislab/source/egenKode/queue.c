@@ -120,6 +120,9 @@ static void ordersUnder(float position){
     while (i <= level){
         if ((i<4) && (up.buttons[i-1])){
             next = i;
+            if (next == position){
+                direction == UP;
+            }
             return;
             }
         i++;
@@ -154,6 +157,9 @@ static void ordersOver(float position){
     while (i >= level){
         if ((i>1) && down.buttons[i-2]){
             next = i;
+            if (next == position){
+                direction == DOWN;
+            }
             return;
             }
         i--;
