@@ -46,3 +46,7 @@
 \
 
 #include "9. refleksjoner robushet.typ"
+
+\
+
+#include "10. refleksjoner git.typ"

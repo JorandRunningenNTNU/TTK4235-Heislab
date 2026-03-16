@@ -1,0 +1,2 @@
+== Refleksjon rundt bruk av git
+Vi har brukt git gjennom hele projektet for å muliggjøre arbeid hver for oss. Dette har fungert bra da modulene er selvstedinge og vi kunne jobbe med en modul uten å påvirke andre deler ved koden. Videre har det også vært nyttig at arbeidet ikke bare blir lagret på sanntidspc-en. På denne måten unngikk vi potensielle problemer med at arbeidet ble slettet. 
