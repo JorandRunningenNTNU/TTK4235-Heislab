@@ -1,5 +1,7 @@
 #set text(lang: "nb")
-#show heading.where(level: 2): set text(size: 12pt) 
+#show heading.where(level: 1): set text(size: 18pt) 
+#show heading.where(level: 2): set text(size: 15pt) 
+#show heading.where(level: 3): set text(size: 12pt) 
 
 
 #include "1. forside.typ"
